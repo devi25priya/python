@@ -1,0 +1,103 @@
+#instead of switchcase ---->matchcase
+'''day = 6
+match day:
+    case 1:
+        print("Monday")
+    case 2:
+        print("tuesday")
+    case 3:
+        print("wednesday")
+    case 4:
+        print("thursday")
+    case 5:
+        print("friday")
+    case 6:
+        print("saturday")
+    case 7:
+        print("sunday")
+    case _:
+        print("looking forward for the weekend")'''
+    
+#if else
+'''marks=int(input("Enter the marks"))
+if marks>=95:
+    print("O grade")
+elif marks>=90 and marks<95:
+    print("A+")
+elif marks>=80 and marks<=40:
+    print("A grade")
+elif marks<40:
+    print("F grade")
+else:
+    print("Invalid marks")   '''  ####in terminal
+
+#for loop
+'''for i in range(3,151):
+    print(i)
+for i in range(6,66):
+    print(i)'''
+
+#while loop
+'''while True:
+    x=int(input("Enter the number to print:"))
+    if x==0:
+        break
+    print(x)
+    print("Enter 0 to break")'''
+'''for i in range(1,100):
+    if (i%2!=0):    #it will give odd #if(i%2==0): it will print even
+        continue
+    print(i)'''
+'''for i in range(1,100):
+    if (i%2!=0):    
+        pass    # is place holder
+    print(i)'''
+
+'''#functions and modules
+import math
+import random
+print(math.sqrt(144))              #12.0
+print(math.floor(5.9))             #5
+print(math.ceil(5.1))              #6           
+print(random.randint(1,10))        #5                  #10 can come
+print(random.randrange(1,11))   '''   #2                  #11 wont come
+
+'''##########calcu.py is importing here..
+import calcu
+calcu.add(3,5)
+calcu.sub(9,2)'''
+
+#types of arguments
+''''def greet(student,trainer):
+    print(f"good morning  {trainer}")    
+    print(f"welcome  {student}")    #      greet("subha","manusree")     #positional arguments---->depends on position
+greet(trainer="Subha",student="manya") ''' #keyword argument
+#variable length argument
+'''def print_num(*args):
+    for i in args:
+        print(i)
+print_num(5,6,7,8,9,10,1,2,3,23,2,3,4,1,1,243)'''     # stored in list
+'''def print_num(**kwargs):
+    for i in kwargs.keys():
+        print(i)
+    for i in kwargs.values():
+        print(i)
+    for k,v in kwargs.items():
+        print(f"keys {k}: values {v}")
+print_num(Trainer="govinthan",student1="yasssh",student2="liku",student3="manu",grade=True,marks=9.5) '''   #stored in dictionaries
+#         #          have done the GUESS game with if else and elif statements
+
+# class in python
+class student:   #constructor is a function of class which is called immedietely after creating object (automatically)
+    def __init__(self,student_name,usn_no,course):   #  this part is constructor
+        self.student_name=student_name
+        self.usn_no=usn_no
+        self.course=course
+    def print_details(self):
+          print(f'''name={self.student_name}  usn_no={self.usn_no}  course={self.course}''')
+yash=student("yash",12345,"python")
+dala=student("dala",56789,"javascript")
+tvis=student("tvis",15678,"c++")
+yash.print_details()
+dala.print_details()
+tvis.print_details()
