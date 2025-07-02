@@ -1,0 +1,130 @@
+'''b={1,2,3,4,5,6}
+print(b)
+print(type(b))
+c={1,1,3243,3243,555,777,555,555,8,777,100}
+print(c)
+b[2]=34
+print(b)
+print(b.index(3))
+c.add(444)
+print(c)
+(c.remove(3243))
+print(c)
+c.add(222)
+#c.remove(222)
+c.discard(3)
+emset=set()
+print(emset)
+print(c)
+print(1 in c)
+c={1,1,3243,3243,555,777,555,555,8,777,100}
+a={1,3,4,7,8,11}
+c.update(a)
+print(c)
+c.clear()
+c.pop()
+e=c.copy()
+print(e)'''
+
+
+# set operations
+A={1,2,3,4,5}
+B={3,4,5,6,7}
+'''print(A.union(B))
+print(A|B)
+print(A.intersection(B))
+print(A&B)
+print(A.difference(B))
+print(A-B)
+print(B.difference(A))
+print(B-A)
+print(A.symmetric_difference(B))
+print(A^B)
+
+x=frozenset([1,2,3,4,5])
+print(x)
+x.add(8)'''
+# Dictionary python can have both single and double quotes
+a= {'name':"datha","age":'24','subject':'python','other_trainer':{'name':'guygu','age':'22','istrainer':'True'}}
+'''print(a["other_trainer"]["name"])
+print(a["other_trainer"]["age"])
+print(a["other_trainer"]["istrainer"])'''
+c={"name":'Aliiiii',"age":55,'course':'python'}
+'''a.update(c)
+print(a)
+print(a)
+print(type(a))
+print(a['name'])
+a['name']='Sujata'
+print(a)
+
+for i in a.keys():
+    print(i)
+for i in a.values():
+    print(i)
+for k,v in a.items():
+    print("key= "+k)
+    print("value= "+str(v))'''
+'''''''''''a.clear()
+print(a)
+a.update(c)
+print(a)'''''''''''
+'''a.pop('other_trainer')
+print(a)
+'''
+#STRING METHOD
+a='''GOOD
+MORNING
+MAKKALEEEH'''
+B="ABCDEFGHIJKLMNoPQRSTUVWXYZ"
+'''print(a)
+print(B[5])
+print(B[-1])
+print(B[-5])
+print(B[-6:])'''
+'''B="      ABCDEFGHIJKLMNOPQRSTUVWXYZ         "
+b="abcdefgh"
+print(B.lower())
+print(B.upper())
+print(B.strip()+b)
+print(B.replace('D','12345678910'))'''
+'''B="AB,C,D,E,F,G,H,I,J,K,L,A,M,A,N,OPQRSTUVWXYZ       "
+#B="      ABCDEFGHIJKLMNOPQRSTUVWXYZ         "
+
+b="ABC"
+c=B+b
+print(c)
+#print("   %    ".join(c))#convert the list to string
+print(c.count("A"))
+print(c.startswith("AB"))
+print(c.endswith("ABC"))
+print(b *4)
+print("B" in b)'''
+
+
+
+'''email=input(" enter email")
+if "@" in email and email.endswith(".com"):
+    print("valid email")
+else:
+    print("invalid")'''
+
+'''a=int(input("enter the number A="))
+b=int(input("enter B="))
+print("addition is",(a+b))
+print("subtraction is",(a-b))
+print(f "multiplication is {a*b}")
+print(f "division is {a/b}")
+print(f "modulus is {a % b}")
+print(f "exponential is {a**b}")''' #in terminalllll
+
+
+age=18
+if age>=18:
+    print("you are eligible")
+
+marks=34
+if marks>=35:
+    print("passed")
+else:
+    print("failed")
