@@ -101,3 +101,49 @@ tvis=student("tvis",15678,"c++")
 yash.print_details()
 dala.print_details()
 tvis.print_details()
+
+
+#################
+################CALCULATOR############################
+
+
+'''def add(a,b):
+    print(a+b)
+def sub(a,b):
+    print(a-b)'''
+
+
+
+###################################GAME      if else   ####################################
+'''import random 
+number=random.randint(1,20)
+while(True):
+    guess=int(input("Enter your guess"))
+    if guess>number:
+        print("Your GUESS IS HIGHER,TRY LOWER")
+    else:
+        print("Your GUESS IS LOWER,TRY HIGHER")
+    if guess==number:
+        print("CONGRATULATIONS YOU WON!!!!")
+        break'''
+
+#####    ELIF 
+import random 
+number=random.randint(1,200)
+while(True):
+    guess=int(input("Enter your guess"))
+    if guess>number:
+        print("Your GUESS IS HIGHER,TRY LOWER")
+    elif guess<number:
+        print("Your GUESS IS LOWER,TRY HIGHER")
+    elif guess==number:
+        print("CONGRATULATIONS YOU WON!!!!")
+        break
+
+
+
+
+
+
+
+
