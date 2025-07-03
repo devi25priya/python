@@ -1,0 +1,36 @@
+# 2 INHERITANCE---->feature of OOPS #
+class student:
+        def __init__(self,student_name,usn_no,course):   #  this part is constructor.
+              self.student_name=student_name
+              self.usn_no=usn_no
+              self.course=course
+        def print_details(self):
+           print(f'''name={self.student_name}  usn_no={self.usn_no}  course={self.course}''')
+class laptop(student):  ####feature of student class has been passed down ie inherited to laptop class.
+    def __init__(self, student_name, usn_no, course,cpu,gpu,ram):
+         super().__init__(student_name, usn_no, course) #parent class ie super class.
+         self.cpu=cpu
+         self.gpu=gpu
+         self.ram=ram
+    def print_details(self):
+           print(f"CPU={self.cpu}  GPU={self.gpu}   RAM={self.ram}")
+           return super().print_details()  #if its not returned it wont be shown as the output.
+    
+acer=laptop("raj",12345,"python","i7",12,"RTX 4060")
+acer.print_details()
+
+
+
+             # POLYMORPHISM----->feature of OOPS
+class Bird:
+     def sound(self):
+          print("chirpppp")
+class Cat:
+     def sound(self):
+          print("meowwwww")
+def make_sound(animal):
+     animal.sound()
+b=Bird()
+c=Cat()
+make_sound(b)
+make_sound(c)
