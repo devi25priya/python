@@ -34,3 +34,151 @@ b=Bird()
 c=Cat()
 make_sound(b)
 make_sound(c)
+
+
+
+#########run-time polymorphism
+class Parent:
+     def show(self):
+          print("Parent's method")
+class Child(Parent):
+     def show(self):
+          print("Child's method")
+obj=Child()
+obj.show()
+
+
+
+##########compile-time polymorphism----operator overloading
+class Point:
+    def __init__(self,x,y):
+        self.x=x
+        self.y=y
+    def __add__(self,other):
+         return Point(self.x+other.x,self.y+other.y)
+p1=Point(1,2)
+p2=Point(3,4)
+p3=p1+p2
+print(p3.x,p3.y)
+
+
+
+
+
+###EXCEPTION HANDLING
+try:
+    print(1/0)
+    print(int("hello"))   ##this two can give zero dividion and value error BUT as we used eception handler:-try except it wont throw error
+except:
+    print("there is an error")
+print("rest of the program")
+
+try:
+    print(1/0)
+    print(int("hello"))
+except ZeroDivisionError:
+    print("We cannot convert this string to number")
+except ValueError:
+    print("Cannot convert this string to number")
+print("rest of the program")
+
+
+##using else block------------[execute only if no exception is raised in the try block]
+try:
+    result=10/2
+except ZeroDivisionError:
+    print("Error!")
+else:
+    print("Success:",result)
+
+
+##raising exceptions manually
+age=int(input("Enter the age:"))
+if(age<18):
+    raise ValueError("Age must be 18 or order.")
+else:
+    print("Access granted.")
+
+
+###################-----------> Opening And Reading The File Called 'firstfile.txt'
+#f=open("firstfile.txt","x")   #x-->to create
+r=open("firstfile.txt","r")
+content=r.read()
+r.close()
+print(content)
+
+#f=open("secondfile.txt","x")            
+f=open("secondfile.txt","r")           ###reads entire file as a string
+content=f.read()
+print(content)
+f.close()
+
+f=open("secondfile.txt","r")
+line1=f.readline()
+line2=f.readline()
+print(line1,line2)
+f.close
+
+
+
+#without writing the content in thirdfile, we can use this way
+f=open("thirdfile.txt","w") #creates the file if it doesnt exist
+f.write("this is newwww one")
+f.close()
+
+try:
+    f=open("fourthfile.txt","r")       #if we start code from here it shows 
+    content=f.read()                   # FileNotFoundError so inorder to
+    f.close()                          #prevent showing this error we use
+    print(content)                     #exception handling try.....except
+except FileNotFoundError:
+    print("this file does NOT exist!!!")
+
+
+
+#appending ---
+f=open("fourthfile.txt","a") #append ,creates file if doesnt exist
+f.write("this is newwww one")
+f.close()
+try:
+    g=open("fourthfile.txt","r")        
+    content=g.read()                   
+    g.close()                          
+    print(content)                     
+except FileNotFoundError:
+    print("this file does NOT exist!!!")           ########whenever it runs it repeats the output 
+                                                   #like this is newww onethis is newww one
+                                                   #---->when it ran 2 times
+
+
+##-----checks whether thr filr exist give output in boolean value as true or false
+import os
+print(os.path.exists("firstfile.txt"))
+
+#os.remove("thirdfile.txt")    #deletes the file
+os.rename("firstfile.txt","firstfile111.txt") #renames the firsfile.txt as firstfile111.txt
+
+
+
+##----read in binary level----##
+with open("tom.jpg","rb") as f:
+    content=f.read()
+print(content)
+
+
+###---create image from binary which was already created in the above--###
+with open("download.jpg","wb")as f:        #can give any name to image
+    f.write(content)
+
+
+with open("fourthfile.txt","r+")as f:    #########to read and appending----#
+    f.write("Hello")
+    content=f.read()
+print(content)
+with open("fourthfile.txt","a+") as f:
+    f.write("hayyamma hayyamaa")
+
+
+
+
+
