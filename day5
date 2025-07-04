@@ -159,3 +159,289 @@ print(df.describe())
 #75%    92.750000
 #max    95.000000
 
+
+#______using GROUPBY--->
+import pandas as pd
+import numpy as np
+df=pd.DataFrame({'Category':['A','B','C','A','B','A'],'Value':[10,15,12,20,18,14]})
+print(df.groupby("Category")['Value'].mean())
+#____________ans
+Category
+A    14.666667
+B    16.500000
+C    12.000000
+Name: Value, dtype: float64
+
+
+#first save student.csv and attach and then process
+student_data=pd.read_csv("student.csv")
+print(student_data)
+
+#ans-----------
+   student_id            name  age grade                       email
+0           1      John Smith   18     A      john.smith@example.com
+1           2   Emily Johnson   17    B+   emily.johnson@example.com
+2           3   Michael Brown   19    A-   michael.brown@example.com
+3           4     Sarah Davis   18     B     sarah.davis@example.com
+4           5    David Wilson   17     A    david.wilson@example.com
+5           6    Jennifer Lee   18    B+    jennifer.lee@example.com
+6           7   Robert Miller   19     C   robert.miller@example.com
+7           8     Lisa Taylor   17    A-     lisa.taylor@example.com
+8           9  James Anderson   18     B  james.anderson@example.com
+9          10    Megan Thomas   19     A    megan.thomas@example.com
+
+
+#--------------REALWORLD EG:-STUDENT REPORT CARD-------------------#
+data={
+    "Student":["Amit","Sara","Neha"],
+    "Math":[80,85,90],
+    "Science":[75,99,80],
+    "English":[78,70,45]
+}
+df=pd.DataFrame(data)
+df["Average"]=df[["Math","Science","English"]].mean(axis=1)
+print(df.sort_values(by="Average",ascending=False))
+#---ans--->
+  Student  Math  Science  English    Average
+1    Sara    85       99       70  84.666667
+0    Amit    80       75       78  77.666667
+2    Neha    90       80       45  71.666667
+
+
+
+
+#____________PANDA SERIES-------
+#From list
+s1=pd.Series([10,20,30,40])
+#from list wth custome index
+s2=pd.Series([100,200,300],index=['a','b','c'])
+#from dictionary
+s3=pd.Series({'x':5,'y':10,'z':15})
+print(s1,s2,s3)
+
+#---ans________
+0    10
+1    20
+2    30
+3    40
+dtype: int64 a    100
+b    200
+c    300
+dtype: int64 x     5
+y    10
+z    15
+dtype: int64
+
+#______SERIES ATTRIBUTES
+print(s1.index)
+print(s1.values)
+print(s1.dtype)
+print(s1.size)
+print(s1.shape)
+
+# RangeIndex(start=0, stop=4, step=1)
+# [10 20 30 40]
+# int64
+# 4
+# (4,)
+
+
+ #_______ACCESSING SERIES DATA-slicing and indexing
+print(s2['b'])
+print(s2[1])
+print(s2[['a','c']])
+print(s2[0:2])
+
+#----MODIFYING SERIES
+s2['b']=250
+s2['d']=400
+s2.drop('a',inplace=True)
+
+##########___________ANSWER OF THIS PART
+0    10
+1    20
+2    30
+3    40
+dtype: int64 a    100
+b    200
+c    300
+dtype: int64 x     5
+y    10
+z    15
+dtype: int64
+RangeIndex(start=0, stop=4, step=1)
+[10 20 30 40]
+int64
+4
+(4,)
+200
+200
+a    100
+c    300
+dtype: int64
+a    100
+b    200
+dtype: int64
+
+
+
+#------------elementwise operation
+s=pd.Series([1,2,3])
+print(s+2)
+print(s*10)
+print(s**2)
+#boolean indexing
+t=pd.Series([5,10,15,20])
+print(t[t>10])
+
+#anssss----------
+0    3
+1    4
+2    5
+dtype: int64
+0    10
+1    20
+2    30
+dtype: int64
+0    1
+1    4
+2    9
+dtype: int64
+2    15
+3    20
+dtype: int64
+
+
+
+#___HANDLING MISSING VALUES-NANS
+import pandas as pd
+import numpy as np
+s=pd.Series([10,None,30,np.nan])
+print(s.isnull())
+print(s.notnull())
+s.fillna(0)
+s.dropna()
+#ANSWER------------------------->
+
+#___HANDLING MISSING VALUES-NANS
+import pandas as pd
+import numpy as np
+s=pd.Series([10,None,30,np.nan])
+print(s.isnull())
+print(s.notnull())
+s.fillna(0)
+s.dropna()
+
+
+#-----DESCRIPTIVE STATISTICS
+import pandas as pd
+s=pd.Series([10,20,30,40,50])
+print(s.sum())
+print(s.mean())
+print(s.min(),s.max())
+print(s.std())
+print(s.describe())
+#answer  --------------------
+150
+30.0
+10 50
+15.811388300841896
+count     5.000000
+mean     30.000000
+std      15.811388
+min      10.000000
+25%      20.000000
+50%      30.000000
+75%      40.000000
+max      50.000000
+dtype: float64
+
+
+
+
+#string method on series
+import pandas as pd
+names=pd.Series(["Alice","bob","CHARLIE","dave"])
+print(names.str.upper())
+print(names.str.capitalize())
+print(names.str.contains("a"))
+#sorting and ranking
+s=pd.Series([30,10,40,20],index=['d','b','a','c'])
+print(s.sort_values())
+print(s.sort_index())
+print(s.rank())
+
+#ANSWER------------------
+0      ALICE
+1        BOB
+2    CHARLIE
+3       DAVE
+dtype: object
+0      Alice
+1        Bob
+2    Charlie
+3       Dave
+dtype: object
+0    False
+1    False
+2    False
+3     True
+dtype: bool
+b    10
+c    20
+d    30
+a    40
+dtype: int64
+a    40
+b    10
+c    20
+d    30
+dtype: int64
+d    3.0
+b    1.0
+a    4.0
+c    2.0
+dtype: float64
+
+
+#ARITHMETIC BETWEEN SERIES (INDEX ALIGNMENT)
+s1=pd.Series([10,20,30],index=['a','b','c'])
+s2=pd.Series([5,15,25],index=['b','c','d'])
+print(s1+s2)
+
+#ans
+a     NaN
+b    25.0
+c    45.0
+d     NaN
+dtype: float64
+
+
+####________plots graphh  1------------>
+import matplotlib.pyplot as plt
+x=[1,2,3,4,5]
+y=[10,15,13,18,16]
+plt.plot(x,y)
+plt.title("Basic Line Plot")
+plt.xlabel("X-axis")
+plt.ylabel("Y-axis")
+plt.grid(True)
+plt.show()
+
+
+
+#3________graph 2
+x=[1,2,3,4,5]
+y1=[1,4,9,16,25]
+y2=[25,16,9,4,1]
+plt.plot(x,y1,label="Ascending")
+plt.plot(x,y2,label="Descending")
+plt.legend()
+plt.show
+
+#___graph 3
+categories=['a','b','c','d']
+values=[10,25,36,18]
+plt.bar(categories,values,color='skyblue')
+plt.title("Bar Chart Example")
+plt.show()
