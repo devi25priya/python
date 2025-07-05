@@ -1,0 +1,111 @@
+
+# DAY::::::::--------5
+
+
+#SCATTER PLOT
+import matplotlib.pyplot as plt
+x=[5,6,7,2,17,2,9,10]
+y=[99,88,87,86,100,86,103,87]
+plt.scatter(x,y,color='purple')
+plt.title("Scatter Plot Example")
+plt.xlabel("X values")
+plt.ylabel("Y values")
+plt.show()
+
+#HISTOGRAM----
+import matplotlib.pyplot as plt
+import numpy as np
+data=np.random.randn(1000)
+plt.hist(data,bins=100,color='red',edgecolor='orange')
+plt.title("Histogram of Random Date")
+plt.xlabel("Value")
+plt.ylabel("Frequency")
+plt.show()
+
+#PIE CHART
+import matplotlib.pyplot as plt
+sizes=[30,40,15,15]
+labels=['python','java','c++','javascript']
+plt.pie(sizes,labels=labels,autopct='%1.1f%%',startangle=90)
+plt.title("Programming Language Usage")
+plt.axis('equal')           #equal aspect ratio to make it a circle
+plt.show()
+
+
+#SUBPLOTS
+import matplotlib.pyplot as plt
+x=[1,2,3,5,10]
+y=[5,6,7,8,9]
+plt.subplot(1,2,1)       #1 row, 2 column , 1st plot
+plt.plot(x,y)
+plt.subplot(1,2,2)
+plt.bar(x,y)
+plt.tight_layout()
+plt.show()
+
+# to save this file plot in folder
+plt.plot(x,y)
+plt.title("Save this plot")
+plt.savefig("plot.png",dpi=300)
+
+#INTEGRATING WITH PANDAS
+import pandas as pd
+import matplotlib.pyplot as plt
+data={
+    "Subject":["math","physics","cgem","bio"],
+    "Marks":[90,85,95,80]
+}
+df=pd.DataFrame(data)
+#plot bar chart from dataframe
+df.plot(x="Subject",y="Marks",kind="bar",color="green",legend=False)
+plt.title("Subject-wise marks")
+plt.ylabel("Score")
+plt.show()
+
+
+# REALWORLD SALES DASHBOARD EXAMPLE
+import matplotlib.pyplot as plt
+months=['jan','feb','mar','apr']
+sales=[3000,5000,7000,9000]
+profit=[4000,5000,1000,1500]
+plt.plot(months,sales,label="Sales",marker='o')
+plt.plot(months,profit,label="Profit",marker='s')
+plt.title("monthly perf")
+plt.xlabel("months")
+plt.ylabel("amount")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+
+#SQL WITH PYTHON
+from sqlite3.dbapi2 import Cursor
+import sqlite3
+db=sqlite3.connect("database2.db")  #create the database or connect if db file exist
+cursorobj=db.cursor()# we need a cursor object to run the sql command
+#it acts as a bridge between your python code and sql lite 3 database
+#to actually run sql commands on python we need cursor object
+#(CRUCD)1.CREATE TABLE   2.READ TABLE   3.UPDATE VALUES(INSERT VALUES ON TABLE)  4.DELETE VALUES
+cursorobj.execute('''CREATE TABLE IF NOT EXISTS students(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT NOT NULL,
+age INTEGER,
+grade TEXT)''')
+db.commit()    #save the changes
+data2=[('bob',19,'b'),('charlie',22,'b+')]
+cursorobj.executemany("INSERT INTO students(name,age,grade) VALUES(?,?,?)",data2)
+db.commit()      # save the changes
+cursorobj.execute('''SELECT*FROM students''')
+data=cursorobj.fetchall()
+for i in data:
+  print(i)
+
+
+
+
+
+
+
+
+
+
