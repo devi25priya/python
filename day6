@@ -101,7 +101,35 @@ for i in data:
   print(i)
 
 
+#TASK TO CHANGE NAME -ID,AGE-NAME,GRADE-ID--------------
 
+from sqlite3.dbapi2 import Cursor
+import sqlite3
+db=sqlite3.connect("database30.db")  #create the database or connect if db file exist
+cursorobj=db.cursor()# we need a cursor object to run the sql command   #db is a name
+#it acts as a bridge between your python code and sql lite 3 database
+#to actually run sql commands on python we need cursor object
+#(CRUCD)1.CREATE TABLE   2.READ TABLE   3.UPDATE VALUES(INSERT VALUES ON TABLE)  4.DELETE VALUES
+cursorobj.execute('''CREATE TABLE IF NOT EXISTS students(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT NOT NULL,
+age INTEGER,
+grade TEXT)''')
+db.commit()    #save the changes
+data2=[('bob',19,'b'),('charlie',22,'b+'),('geeta',40,'a+')]
+cursorobj.executemany("INSERT INTO students(name,age,grade) VALUES(?,?,?)",data2)
+db.commit()      # save the changes
+cursorobj.execute('''UPDATE students SET name=? WHERE age=?''',("vish",40))
+cursorobj.execute('''UPDATE students SET age=? WHERE name=?''',(10,"bob"))
+cursorobj.execute('''UPDATE students SET grade=? WHERE id=?''',("A+",2))
+cursorobj.execute('''SELECT*FROM students''')
+data=cursorobj.fetchall()
+for i in data:
+  print(i)
+#ANSWER---------------___________----
+(1, 'bob', 10, 'b')
+(2, 'charlie', 22, 'A+')
+(3, 'vish', 40, 'a+')
 
 
 
