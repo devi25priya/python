@@ -131,6 +131,81 @@ for i in data:
 (2, 'charlie', 22, 'A+')
 (3, 'vish', 40, 'a+')
 
+#DELETING____________
+from sqlite3.dbapi2 import Cursor
+import sqlite3
+db=sqlite3.connect("database18.db")  #create the database or connect if db file exist
+cursorobj=db.cursor()# we need a cursor object to run the sql command   #db is a name
+#it acts as a bridge between your python code and sql lite 3 database
+#to actually run sql commands on python we need cursor object
+#(CRUCD)1.CREATE TABLE   2.READ TABLE   3.UPDATE VALUES(INSERT VALUES ON TABLE)  4.DELETE VALUES
+cursorobj.execute('''CREATE TABLE IF NOT EXISTS students(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT NOT NULL,
+age INTEGER,
+grade TEXT)''')
+db.commit()    #save the changes
+data2=[('bob',19,'b'),('charlie',22,'b+'),('geeta',40,'a+')]
+cursorobj.executemany("INSERT INTO students(name,age,grade) VALUES(?,?,?)",data2)
+db.commit()      # save the changes
+cursorobj.execute('''UPDATE students SET name=? WHERE age=?''',("vish",40))
+cursorobj.execute('''UPDATE students SET age=? WHERE name=?''',(10,"bob"))
+db.commit()
+cursorobj.execute('''DELETE FROM students WHERE name=?''',("bob",))
+cursorobj.execute('''SELECT*FROM students''')
+data=cursorobj.fetchall()
+for i in data:
+  print(i)
+
+#ANSWER________
+(2, 'charlie', 22, 'b+')
+(3, 'vish', 40, 'a+')
+
+
+
+
+#____________JSON__________________
+#-----------------JAVA SCRIPT OBJECT NOTATION-JASON---------------------
+#GET-fetch the data from server
+#POST-submit new data to server
+#PUT-update existing resource
+#DELETE-remove a resource
+
+import json
+dict={'name':'geeta','age':'25','course':'python'}
+print(dict)
+json_obj=json.dumps(dict)    #converting dictionary to JSON
+print(json_obj)
+dict2=json.loads(json_obj)    #converting JSON to dictionary
+print(dict2)
+#ANSWERS----------------------------------------------------------------
+{'name': 'geeta', 'age': '25', 'course': 'python'}
+{"name": "geeta", "age": "25", "course": "python"}
+{'name': 'geeta', 'age': '25', 'course': 'python'}
+
+
+#REQUEST MODULE---------------------------------------------------------
+import json
+import requests
+url="https://zenquotes.io/api/quotes"#copied link address and pasted
+json_data=requests.get(url)
+data=json_data.json()    #.json converts to dictionary
+print(data)
+print(data[0]["a"])
+print(data[2]["c"])
+print(data[4]["q"])
+print(data[6]["a"])
+print(data[8]["c"])         #indexing to get the specified output 
+
+
+
+
+
+
+
+
+
+
 
 
 
