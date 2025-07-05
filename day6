@@ -217,3 +217,8 @@ res = requests.get(url)
 weather = res.json()
 print("Temperature:", weather['main']['temp'], "°C")
 print("Condition:", weather['weather'][0]['description'])
+#NOTES__________________________________________________________________________________
+#paramas-used ton store small information
+#payload-used to create and retrieve information
+#headers- are short information about data
+
