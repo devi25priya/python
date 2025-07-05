@@ -209,12 +209,11 @@ print(data)
 
 
 
-
-
-
-
-
-
-
-
-
+#real world API---------OPENWEATHER as example-----------------------------------------
+api_key = "your_api_key"   #after login enter the API key
+city = "Delhi"
+url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+res = requests.get(url)
+weather = res.json()
+print("Temperature:", weather['main']['temp'], "°C")
+print("Condition:", weather['weather'][0]['description'])
